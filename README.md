@@ -1,31 +1,37 @@
-# Aviabot Shared Utils
+# Shared Utils Library
 
-Утилиты и вспомогательные компоненты для микросервисов Aviabot.
+Утилиты и провайдеры для всех микросервисов.
+
+## Назначение
+
+- HTTP клиенты
+- Валидация данных
+- Генераторы ID
+- Провайдеры времени
+- Конфигурация
 
 ## Содержимое
 
-- `providers` - Провайдеры (IDGenerator implementations)
-- `config` - Общие конфигурации
-- `http` - HTTP клиенты
-- `validation` - Валидаторы
+- `http/` - HTTP клиенты
+- `validation/` - валидация
+- `providers/` - ID генераторы, время
+- `config/` - конфигурация
 
 ## Использование
 
 ```go
-import (
-    "github.com/KamnevVladimir/aviabot-shared-utils/providers"
-    "github.com/KamnevVladimir/aviabot-shared-utils/config"
-    "github.com/KamnevVladimir/aviabot-shared-utils/http"
-    "github.com/KamnevVladimir/aviabot-shared-utils/validation"
-)
+import "github.com/KamnevVladimir/aviabot-shared-utils/providers"
+
+// Генератор ID
+generator := providers.NewIDGenerator()
+id := generator.Generate()
+
+// Валидация
+validator := validation.NewValidator()
+err := validator.Validate(data)
 ```
 
-## Зависимости
+## Версионирование
 
-- `github.com/KamnevVladimir/aviabot-shared-core` - Базовые интерфейсы
-
-## Установка
-
-```bash
-go get github.com/KamnevVladimir/aviabot-shared-utils@v1.0.0
-```
+- v1.0.1 - текущая версия
+- Используется во всех микросервисах
